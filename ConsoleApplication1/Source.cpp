@@ -1,14 +1,19 @@
 #include <iostream>
 #include <WinSock2.h>
 #include "Serial.h"
+#include <string>
 
 // link with Ws2_32.lib
 #pragma comment(lib,"Ws2_32.lib")
 
 using namespace std;
 
-int main()
+int main(int argc, char* args[])
 {
+	cout<<"Number of lights: "<<args[1]<<endl;
+
+	int lightLength=stoi(args[1]);
+
     Serial serial = Serial("COM5");
 
 	SOCKET sock = INVALID_SOCKET;
@@ -74,7 +79,8 @@ int main()
             serial.WriteData(&i, 1);
             serial.WriteData(buf, 3);
 			i++;
-			if (i >= 96) {
+			//if (i >= 96) {
+			if(i>=lightLength){
 				i = 0;
 			}
 			//cout << "DataR: " << (int)buf[0] << " DataG: " << (int)buf[1] << " DataB: " << (int)buf[2] << endl;
