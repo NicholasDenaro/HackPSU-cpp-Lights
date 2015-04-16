@@ -3,6 +3,7 @@
 #include "Serial.h"
 #include <string>
 
+//testing branches, this is master!
 // link with Ws2_32.lib
 #pragma comment(lib,"Ws2_32.lib")
 
